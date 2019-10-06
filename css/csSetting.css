@@ -16,15 +16,6 @@
 
 }
 
-.setting_button {
-    width: 22px;
-    height: 22px;
-    padding: 0;
-    border: 0;
-    background: url(../img/setting.png) center no-repeat;
-    background-size: cover;
-}
-
 .setting_box {
     display: none;
     position: absolute;
@@ -55,19 +46,6 @@
 /*    background-color: #3e8e41;*/
 /*}*/
 
-.ct_setting_window_on {
-    width: 1485px;
-    height: 790px;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    z-index: 11;
-    background: url(../img/setting_bg.png) center no-repeat;
-    background-size: cover;
-}
-
 .ct_setting_window_all {
     width: 1350px;
     height: 700px;
@@ -75,16 +53,6 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
-
-#ct_setting_window_x {
-    height: 35px;
-    width: 35px;
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    background: url(../img/window_dot_x.png) center no-repeat;
-    background-size: cover;
 }
 
 #ct_setting_window_top {
@@ -275,16 +243,6 @@
     /*background-size: cover;*/
 }
 
-.setting_import_tower_info_bottom input[type="checkbox"]:checked + label {
-    width: 100px;
-    height: 40px;
-    font-weight: normal;
-    font-size: 15px;
-    margin: 10px;
-    background: url(../img/company_bg.png) center no-repeat;
-    background-size: cover;
-}
-
 .setting_submit {
     right: 10px;
     bottom: 10px;
@@ -317,13 +275,6 @@
     left: 30px;
     width: 500px;
     height: 125px;
-}
-.setting_input_image{
-    width: 125px;
-    height: 125px;
-    background: url(../img/image_bg.png) center no-repeat;
-    background-size: cover;
-    margin: 10px;
 }
 
 .setting_batch_window{

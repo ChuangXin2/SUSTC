@@ -38,26 +38,6 @@ $("#setting_import_button").click(function () {
             center: [113.94975, 22.53928],
         });
         $("#setting_import_tower_info").append("<form><div class='setting_import_tower_info_left'>" +
-            "铁塔名称：<input type='text' name=''><br>" +
-            "铁塔编号：<input type='text' name=''><br>" +
-            "建塔日期：<input type='text' name=''><br>" +
-            "所在省份：<input type='text' name=''><br>" +
-            "安装位置：<input type='text' name=''><br>" +
-            "所在纬度：<input type='text' name=''><br>" +
-            "</div><div  class='setting_import_tower_info_right'>" +
-            "所在地市：<input type='text' name=''><br>" +
-            "所在街道：<input type='text' name=''><br>" +
-            "所在类型：<input type='text' name=''><br>" +
-            "所在县区：<input type='text' name=''><br>" +
-            "铁塔高度：<input type='text' name=''><br>" +
-            "所在经度：<input type='text' name=''><br>" +
-            "</div><div class='setting_import_tower_info_bottom'>天面类型：" +
-            "<input type='checkbox' name='company' value='blue' id='china_mobile'>" +
-            "<label for='china_mobile' class='company_label'>移动天面</label>" +
-            "<input type='checkbox' name='company' value='blue' id='china_unicom'>" +
-            "<label for='china_unicom' class='company_label'>联通天面</label>" +
-            "<input type='checkbox' name='company' value='blue' id='china_telecom'>" +
-            "<label for='china_telecom' class='company_label'>电信天面</label>" +
             "</div></form>");
         $("#setting_import_tower_button").append("<button id='setting_import_tower_reset'>重置</button>" +
             "<button id='setting_import_tower_submit'>提交</button>");
