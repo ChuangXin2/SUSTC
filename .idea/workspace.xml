@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4771781d-5327-465f-bd5c-f2e0093acfd1" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
+              <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/ctSetting.js">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>ct_left_time_first</find>
+      <find>z-index: 7;</find>
+      <find>background</find>
+      <find>rc_onclick_show</find>
+      <find>请选择时间范围</find>
+      <find>rc_pop_device_state</find>
+      <find>rc_pop_close</find>
+      <find>left_fault_img_button_3</find>
+      <find>fault_handling_processing</find>
+      <find>.index</find>
+      <find>严重警告'</find>
+      <find>alert</find>
+      <find>上一页</find>
+      <find>device_page_</find>
+      <find>rc_date_pos_export</find>
+      <find>device_page(</find>
+      <find>device_page</find>
+      <find>onclick</find>
+      <find>left_weather_img</find>
+      <find>left_fault_img_button</find>
+      <find>下一页</find>
+      <find>$.ajax</find>
+      <find>device_state_table</find>
+      <find>rc_load_weather_data</find>
+      <find>device_state_processing</find>
+      <find>left_vm</find>
+      <find>vm</find>
+      <find>GLOBALIP</find>
+      <find>ajax</find>
+      <find>rc_left_load_data</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/js/ctRight.js" />
+        <option value="$PROJECT_DIR$/css/ctMap.css" />
+        <option value="$PROJECT_DIR$/css/ctRight.css" />
+        <option value="$PROJECT_DIR$/js/ctMap.js" />
+        <option value="$PROJECT_DIR$/css/ctSetting.css" />
+        <option value="$PROJECT_DIR$/css/ctLeft.css" />
+        <option value="$PROJECT_DIR$/js/ctLeft.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/china_tower.iml" />
+        <option value="$PROJECT_DIR$/.idea/misc.xml" />
+        <option value="$PROJECT_DIR$/.idea/modules.xml" />
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-12" />
+    <option name="y" value="-12" />
+    <option name="width" value="1944" />
+    <option name="height" value="1044" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="Scope" currentSubView="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="SUSTC" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="D:\桌面\南科大\0：计算机\计算机科学创新实验\第2次创新实验\SUSTC" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="ProjectPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../CS401" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4771781d-5327-465f-bd5c-f2e0093acfd1" name="Default Changelist" comment="" />
+      <created>1563783305774</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1563783305774</updated>
+      <workItem from="1563783308196" duration="4872000" />
+      <workItem from="1563927797235" duration="25240000" />
+      <workItem from="1564015418258" duration="25214000" />
+      <workItem from="1564100769598" duration="23985000" />
+      <workItem from="1564360647295" duration="25092000" />
+      <workItem from="1565916015659" duration="3612000" />
+      <workItem from="1567855473456" duration="1632000" />
+      <workItem from="1570337523658" duration="777000" />
+      <workItem from="1570338503337" duration="29000" />
+      <workItem from="1570338534104" duration="39000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="133922000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23605497" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3285968" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32932165" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Python Console" order="11" />
+      <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/css/ctSetting.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="25" column="1" lean-forward="true" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/ctBottom.css" />
+    <entry file="file://$PROJECT_DIR$/css/ctRight.css" />
+    <entry file="file://$PROJECT_DIR$/css/ctLeft.css" />
+    <entry file="file://$PROJECT_DIR$/js/ctRight.js" />
+    <entry file="file://$PROJECT_DIR$/js/ctMap.js" />
+    <entry file="file://$PROJECT_DIR$/js/ctLogin.js" />
+    <entry file="file://$PROJECT_DIR$/js/ctBottom.js" />
+    <entry file="file://$PROJECT_DIR$/login.html" />
+    <entry file="file://$PROJECT_DIR$/js/ctLeft.js" />
+    <entry file="file://$PROJECT_DIR$/css/ctMap.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="10" lean-forward="true" selection-start-column="10" selection-end-line="2" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/ctSetting.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+  </component>
+</project>
