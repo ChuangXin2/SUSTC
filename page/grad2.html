@@ -165,6 +165,19 @@
 
 		rectangle.on('click', (data) => {//绑定左键事件
 		    info_vm.info_show_data(rectangle.getBounds());
+            var rectangle2 = new AMap.Rectangle({
+              bounds: bounds,
+              strokeColor: '#000000',
+              strokeWeight: 1,
+              strokeStyle: 'dashed',
+              fillColor: 'blue',
+              fillOpacity: 0.35,
+              zIndex:100,
+            });
+            rectangle2.setMap(map);
+            rectangle2.on('click', (data) => {//绑定左键事件
+              map.remove(rectangle2);
+            });
 		});
 	}
   init('beijing')
