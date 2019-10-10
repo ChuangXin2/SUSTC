@@ -16,6 +16,10 @@
   <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css"/>
   <script src="https://webapi.amap.com/maps?v=1.4.11&key=ec1188431525f10292086a250136e253"></script>
   <script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script>
+  <link rel="stylesheet" type="text/css" href="../plugins/jquery/dist/jquery-ui.css"/>
+  <script type="text/javascript" src="../plugins/jquery/dist/jquery.min.js"></script>
+  <script src="../plugins/jquery/dist/jquery-ui.js"></script>
+  <script type="text/javascript" src="../js/csInformation.js"></script>
 </head>
 <body>
 <div id="container" class="map"></div>
@@ -98,7 +102,8 @@
     }
   }
   //需要拆分网格的城市
-  var grad_city,left_lng,left_lat,right_lng,right_lat,center_left_lng,center_left_lat,center_right_lng,center_right_lat,southWest,northEast,center_southWest,center_northEast,center_northEast,map;
+  var grad_city,left_lng,left_lat,right_lng,right_lat,center_left_lng,center_left_lat,center_right_lng,center_right_lat,
+          southWest,northEast,center_southWest,center_northEast,center_northEast,map;
 
   var km = 5000;//拆分的公里数
   var center_km = 1000;//内部拆分的公里数
@@ -110,8 +115,8 @@
     center_right_lng = cityObj[grad_city].center_right_lng;
     center_right_lat = cityObj[grad_city].center_right_lat;
 
-    center_southWest = new AMap.LngLat(center_left_lng, center_left_lat) //左上
-    center_northEast = new AMap.LngLat(center_right_lng, center_right_lat) //右下
+    center_southWest = new AMap.LngLat(center_left_lng, center_left_lat); //左上
+    center_northEast = new AMap.LngLat(center_right_lng, center_right_lat); //右下
     map = new AMap.Map('container', {
       center: cityObj[grad_city].center,
       zoom: 8
@@ -119,9 +124,9 @@
     map.on('click', function(e) {
       alert(e.lnglat.getLng() + ',' + e.lnglat.getLat())
     });
-    var center_x1 = new AMap.LngLat(center_left_lng, center_left_lat)
-    var center_x2 = new AMap.LngLat(center_right_lng, center_left_lat)
-    var center_y = new AMap.LngLat(center_left_lng, center_right_lat)
+    var center_x1 = new AMap.LngLat(center_left_lng, center_left_lat);
+    var center_x2 = new AMap.LngLat(center_right_lng, center_left_lat);
+    var center_y = new AMap.LngLat(center_left_lng, center_right_lat);
     var center_x_distance = center_x1.distance(center_x2);
     var center_y_distance = center_x1.distance(center_y);
     drawCenterGrad(center_left_lng, center_left_lat, center_right_lng, center_right_lat, center_x_distance, center_y_distance);
@@ -142,7 +147,7 @@
     }
   }
   function drawrectangle(southWest,northEast){
-		var bounds = new AMap.Bounds(southWest, northEast)
+		var bounds = new AMap.Bounds(southWest, northEast);
 
 		var rectangle = new AMap.Rectangle({
 			bounds: bounds,
@@ -151,14 +156,14 @@
           strokeStyle: 'dashed',
           fillColor: 'transparent',
           zIndex:100,
-		})
+		});
 
-		rectangle.setMap(map)
+		rectangle.setMap(map);
     // 缩放地图到合适的视野级别
 		//map.setFitView([ rectangle ])
 
 		rectangle.on('click', (data) => {//绑定左键事件
-			alert(rectangle.getBounds())
+		    info_vm.info_show_data(rectangle.getBounds());
 		});
 	}
   init('beijing')

@@ -42,12 +42,11 @@ var info_vm = {
 			}
 		});
 	},
-	info_show_data:function(logi,lati) {
+	info_show_data:function(bound) {
 		var nowDate = new Date();
 		var hour = nowDate.getHours().toString();
-		var key = keys['info-hour'+hour];
-		var url = 'https://restapi.amap.com/v3/traffic/status/rectangle?' +
-					'rectangle=116.351147,39.966309;116.357134,39.968727&&key=' + key;
+		var key = keys['info-hour'+1];
+		var url = 'https://restapi.amap.com/v3/traffic/status/rectangle?rectangle='+bound+'&&key=' + key;
 		$.ajax({
 			type: 'GET',
 			async: false,
