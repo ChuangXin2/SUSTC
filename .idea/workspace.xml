@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="5f058dff-1be3-4fec-9fa5-165053b511d3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/img/button.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/js/csInformation.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/csInformation.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/page/grad2.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/grad2.html" afterDir="false" />
     </list>
+=======
+    <list default="true" id="5f058dff-1be3-4fec-9fa5-165053b511d3" name="Default Changelist" comment="" />
+>>>>>>> 3b391bf15465d6dc8d1b6c90c037096858543ab6
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< HEAD
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
@@ -61,6 +66,8 @@
       </file>
     </leaf>
   </component>
+=======
+>>>>>>> 3b391bf15465d6dc8d1b6c90c037096858543ab6
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -92,6 +99,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+<<<<<<< HEAD
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -150,12 +158,22 @@
       <pane id="Scope" />
     </panes>
   </component>
+=======
+  <component name="ProjectId" id="1S0KV86uobavloS0dTNBqY4uyZu" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+>>>>>>> 3b391bf15465d6dc8d1b6c90c037096858543ab6
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+<<<<<<< HEAD
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../china_tower" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+>>>>>>> 3b391bf15465d6dc8d1b6c90c037096858543ab6
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -194,6 +212,7 @@
       <updated>1570341585560</updated>
       <workItem from="1570341598072" duration="6810000" />
       <workItem from="1570608599295" duration="2435000" />
+<<<<<<< HEAD
       <workItem from="1570682573802" duration="7745000" />
     </task>
     <servers />
@@ -286,4 +305,14 @@
       </provider>
     </entry>
   </component>
+=======
+      <workItem from="1570682573802" duration="3990000" />
+      <workItem from="1570695096676" duration="1115000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+>>>>>>> 3b391bf15465d6dc8d1b6c90c037096858543ab6
 </project>
