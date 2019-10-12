@@ -1,0 +1,24 @@
+.win_css{
+    /*display: none;*/
+}
+
+#window {
+    width: 200px;
+    height: 200px;
+    background: url(../img/pop_bg.png) center no-repeat;
+    z-index: 10;
+    padding: 4% 3%;
+}
+
+.rc_pop_close {
+    width: 3rem;
+    height: 3rem;
+    display: inline-block;
+    position: absolute;
+    right: 1%;
+    top: 2%;
+    background: url("../img/window_dot_x.png");
+    cursor: pointer;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+}

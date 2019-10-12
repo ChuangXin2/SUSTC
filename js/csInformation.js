@@ -20,6 +20,7 @@ var info_vm = {
 	callbackAutoShow: function() {},
 	listingsData: {},
 	cs_info_init: function() {
+        $('.window').append(`<div class="pop_close" id="rc_pop_device_state_close"></div>`);
     },
 	info_button:function() {
 		var nowDate = new Date();
