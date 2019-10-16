@@ -8,3 +8,13 @@ html,body{
         width: 100%;
         float: left;
 	}
+.info{
+        position:absolute;
+        left:50px;
+        top:50px;
+        width:18rem;
+        height:40rem;
+        overflow:auto;
+        display:none;
+        z-index: 10;
+}

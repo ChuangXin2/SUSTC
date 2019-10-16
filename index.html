@@ -1,22 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>高德交通数据收集系统</title>
-    <link rel="stylesheet" href="./css/csMap.css" media="all"/>
-    <link rel="stylesheet" href="./css/csSetting.css" media="all"/>
-    <link rel="stylesheet" type="text/css" href="./plugins/jquery/dist/jquery-ui.css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+  <title>网格拆分地图</title>
+
+  <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css"/>
+  <link rel="stylesheet" type="text/css" href="./plugins/jquery/dist/jquery-ui.css"/>
+  <link rel="stylesheet" href="./css/csMap.css" media="all"/>
+  <link rel="stylesheet" href="./css/csShow.css" media="all"/>
+
+  <script src="https://webapi.amap.com/maps?v=1.4.11&key=ec1188431525f10292086a250136e253"></script>
+  <script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script>
+  <script type="text/javascript" src="./plugins/jquery/dist/jquery.min.js"></script>
+  <script src="./plugins/jquery/dist/jquery-ui.js"></script>
+  <script type="text/javascript" src="./js/csInformation.js"></script>
+  <script type="text/javascript" src="./js/csMap.js"></script>
+  <script type="text/javascript" src="./js/csShow.js"></script>
 </head>
 <body>
-
-<header class="ct_header"></header>
-
-<div class="ct_body" id="ct_body">
+<div id="container" class="map"></div>
+<div id="info" class="input-card" style="position:absolute;left:50px;top:50px;width:18rem;height:40rem; overflow:auto;display:none">
+	<h3>信息展示</h3>
+	<table border="1" id="t1">
+		<tr>
+			<th>道路</th>
+			<th>通行情况</th>
+		</tr>
+	</table>
 </div>
-
-
-<script type="text/javascript" src="./plugins/jquery/dist/jquery.min.js"></script>
-<script src="./plugins/jquery/dist/jquery-ui.js"></script>
-<script type="text/javascript" src="./js/csSetting.js"></script>
+<div class="input-card" style="width:18rem">
+    <h4>信息窗体的打开</h4>
+    <div>
+      <div class="input-item">
+        <button id="clickOn" class="btn" style="margin-right:1rem;" onclick="openInfo()">打开信息窗体</button>
+		<button id="clickOff" class="btn" onclick="closeInfo()">关闭信息窗体</button>
+      </div>
+    </div>
+</div>
+<script>
+</script>
 </body>
 </html>
