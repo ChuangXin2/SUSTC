@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>鼠标拾取地图坐标并展示</title>
+    <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" />
+    <script type="text/javascript" src="https://cache.amap.com/lbs/static/addToolbar.js"></script>
+</head>
+<link rel="stylesheet" type="text/css" href="../css/csShow.css" />
+
+<body>
+<div id="container" class="map"></div>
+<div id="info" class="input-card" style="position:absolute;left:50px;top:50px;width:18rem;height:40rem; overflow:auto;display:none">
+	<h3>信息展示</h3>
+	<table border="1" id="t1">
+		<tr>
+			<th>道路</th>
+			<th>通行情况</th>
+		</tr>
+	</table>
+</div>
+<div class="input-card" style="width:18rem">
+    <h4>信息窗体的打开</h4>
+    <div>
+      <div class="input-item">
+        <button id="clickOn" class="btn" style="margin-right:1rem;">打开信息窗体</button>
+		<button id="clickOff" class="btn">关闭信息窗体</button>
+      </div>
+    </div>
+</div>
+<script src="https://webapi.amap.com/maps?v=1.4.15&key=您申请的key值&plugin=AMap.Autocomplete"></script>
+<script type="text/javascript" src="../js/csShow.js"></script>
+</body>
+</html>
