@@ -22,27 +22,6 @@ var info_vm = {
 	cs_info_init: function() {
         // $('.window').append(`<div class="pop_close" id="rc_pop_device_state_close"></div>`);
     },
-	info_button:function() {
-		var nowDate = new Date();
-		var hour = nowDate.getHours().toString();
-		var key = keys['info-hour'+hour];
-		var url = 'https://restapi.amap.com/v3/traffic/status/rectangle?' +
-					'rectangle=116.351147,39.966309;116.357134,39.968727&&key=' + key;
-		$.ajax({
-			type: 'GET',
-			async: false,
-			data: {},
-			url: url,
-			dataType: 'json',
-			success: function (data) {
-				console.log(data);
-				return data;
-			},
-			error: function () {
-				console.log("加载错误");
-			}
-		});
-	},
 	info_show_data:function(bound) {
 		var nowDate = new Date();
 		var hour = nowDate.getHours().toString();
@@ -56,6 +35,7 @@ var info_vm = {
 			dataType: 'json',
 			success: function (data) {
 				console.log(data);
+				info_vm.table_info(bound,data);
 				return data;
 			},
 			error: function () {
@@ -63,6 +43,34 @@ var info_vm = {
 			}
 		});
 	},
+	table_info:function(bound,data){
+		// var device_state_info = '<tr>\n' +
+		// 	'\t\t\t<th>区域</th>\n' +
+		// 	'\t\t\t<th>描述</th>\n' +
+		// 	'\t\t\t<th>畅通占比</th>\n' +
+		// 	'\t\t\t<th>缓行占比</th>\n' +
+		// 	'\t\t\t<th>拥堵占比</th>\n' +
+		// 	'\t\t\t<th>未知占比</th>\n' +
+		// 	'\t\t</tr>';
+		// device_state_info += '<tr></tr>>';
+		var traf_info = data.trafficinfo;
+		var evaluation = traf_info.evaluation;
+		var ex = data;
+		var a=document.getElementById('t1');
+		var a0=a.insertRow(-1);
+		var a1=a0.insertCell(0);
+		var a2=a0.insertCell(1);
+		var a3=a0.insertCell(2);
+		var a4=a0.insertCell(3);
+		var a5=a0.insertCell(4);
+		var a6=a0.insertCell(5);
+		a1.innerHTML = bound;
+		a2.innerHTML = traf_info.description;
+		a3.innerHTML = evaluation.expedite;
+		a4.innerHTML = evaluation.congested;
+		a5.innerHTML = evaluation.blocked;
+		a6.innerHTML = evaluation.unknown;
+	}
 };
 
 $(function () {

@@ -142,6 +142,7 @@ function drawrectangle(southWest, northEast) {
 
     rectangle.on('click', (data) => {//绑定左键事件
         info_vm.info_show_data(rectangle.getBounds());
+        openInfo();
         var rectangle2 = new AMap.Rectangle({
             bounds: bounds,
             strokeColor: '#000000',
