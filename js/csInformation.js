@@ -20,7 +20,7 @@ var info_vm = {
 	callbackAutoShow: function() {},
 	listingsData: {},
 	cs_info_init: function() {
-        $('.window').append(`<div class="pop_close" id="rc_pop_device_state_close"></div>`);
+        // $('.window').append(`<div class="pop_close" id="rc_pop_device_state_close"></div>`);
     },
 	info_button:function() {
 		var nowDate = new Date();
@@ -65,10 +65,6 @@ var info_vm = {
 	},
 };
 
-
-function info_timing(){
-
-}
 $(function () {
     info_vm.cs_info_init();
 });
