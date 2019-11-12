@@ -154,7 +154,9 @@ function drawrectangle(southWest, northEast) {
         });
         rectangle2.setMap(map);
         rectangle2.on('click', (data) => {//绑定左键事件
-            map.remove(rectangle2);
+            info_vm.row_delete(rectangle2.getBounds());
+			map.remove(rectangle2);
+			
         });
     });
 };

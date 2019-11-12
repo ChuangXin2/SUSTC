@@ -72,6 +72,21 @@ var info_vm = {
 		a4.innerHTML = evaluation.congested;
 		a5.innerHTML = evaluation.blocked;
 		a6.innerHTML = evaluation.unknown;
+	},
+	row_delete:function(bound){
+		boundstr = ""+bound;
+		boundspl = boundstr.split(';');
+		a_bounds = boundspl[0]+""+boundspl[1];
+		var t_size = $("#t1").find("tr").length;
+		var f_row = 0;
+		for(i = 0; i < t_size-1; i++){
+			var f_bounds = $("#t1 tr:gt(0):eq("+i+") td:eq(0)").text();
+			if(f_bounds == a_bounds){
+				f_row = i;
+				break;
+			}
+		}
+		$("#t1 tr:gt(0):eq("+f_row+")").remove();
 	}
 };
 
