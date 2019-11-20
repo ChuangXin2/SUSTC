@@ -34,12 +34,27 @@
 		</tr>
 	</table>
 </div>
-<div class="input-card" style="width:18rem">
+<div id="download" class="input-card" style="position:absolute;left:50px;bottom:50px;width:13rem;height:10rem; overflow:auto;display:none">
+	<h3>下载</h3>
+	<button id="download3" class="btn" style="margin-right:1rem;" >下载1</button>
+	<button id="download4" class="btn" style="margin-right:1rem;" >下载2</button>
+</div>
+<div id="choose" class="input-card" style="position:absolute;left:50px;top:50px;width:38rem;height:30rem; overflow:auto;display:none">
+	<h3>快速选择</h3>
+	Row:<br>
+	<input type="text" name="firstrow">-<input type="text" name="endrow"><br>
+	Col:<br>
+	<input type="text" name="firstcol">-<input type="text" name="endcol"><br><br>
+	<button id="choose0" class="btn" style="margin-right:1rem;" >确定</button>
+</div>
+<div class="input-card" style="width:18rem;height:9rem">
     <h4>信息窗体的打开</h4>
     <div>
       <div class="input-item">
         <button id="clickOn" class="btn" style="margin-right:1rem;" onclick="openInfo()">打开信息窗体</button>
 		<button id="clickOff" class="btn" onclick="closeInfo();info_vm.table_info_download();">关闭信息窗体</button>
+		<button id="clickOn2" class="btn" style="margin-right:1rem;" onclick="openInfo2()">打开下载窗体</button>
+		<button id="clickOn3" class="btn"  onclick="openInfo3()">地图快速选择</button>
       </div>
     </div>
 </div>
