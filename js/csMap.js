@@ -119,12 +119,12 @@ function drawCenterGrad(center_left_lng, center_left_lat, center_right_lng, cent
             _right_lat = center_left_lat - i * centerkm - centerkm;
             _southWest = new AMap.LngLat(_left_lng, _left_lat); //左上
             _northEast = new AMap.LngLat(_right_lng, _right_lat); //右下
-            drawrectangle(_southWest, _northEast)
+            drawrectangle(_southWest, _northEast, i, j, center_x_total, center_y_total);
         }
     }
 }
 
-function drawrectangle(southWest, northEast) {
+function drawrectangle(southWest, northEast, i, j, center_x_total, center_y_total) {
     var bounds = new AMap.Bounds(southWest, northEast);
 
     var rectangle = new AMap.Rectangle({
@@ -135,13 +135,13 @@ function drawrectangle(southWest, northEast) {
         fillColor: 'transparent',
         zIndex: 100,
     });
-
     rectangle.setMap(map);
     // 缩放地图到合适的视野级别
     //map.setFitView([ rectangle ])
 
     rectangle.on('click', (data) => {//绑定左键事件
         info_vm.info_show_data(rectangle.getBounds());
+        alert(i*center_x_total + j + 1); //弹出方块索引
         openInfo();
         var rectangle2 = new AMap.Rectangle({
             bounds: bounds,
