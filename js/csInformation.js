@@ -157,11 +157,11 @@ var info_vm = {
 			c_up = c_down;
 			c_down = c_temp;
 		}
-		if(parseInt(c_up) > 400 || parseInt(r_left) > 400){
+		if(parseInt(c_up) > 60 || parseInt(r_left) > 60){
 			alert("0; 0; 0; 0")
 		}else{
-			if(parseInt(c_down) > 400) c_down = 400;
-			if(parseInt(r_right) > 400) r_right = 400;
+			if(parseInt(c_down) > 60) c_down = 60;
+			if(parseInt(r_right) > 60) r_right = 60;
 			alert(r_left+"; "+r_right+"; "+c_up+"; "+c_down);
  		}
 	},

@@ -50,10 +50,10 @@
 	<h3>快速选择</h3>
 	Row:<br>
 	<input id="rLeft" type="text" onkeyup="value=value.replace(/^(0+)|[^\d]+/g,'')" name="firstrow" style="width: 20%">-
-	<input id="rRight" type="text" onkeyup="value=value.replace(/^(0+)|[^\d]+/g,'')" name="endrow" style="width: 20%"><br>
+	<input id="rRight" type="text" onkeyup="value=value.replace(/^(0+)|[^\d]+/g,'')" name="endrow" style="width: 20%">（1-60）<br>
 	Col:<br>
 	<input id="cUp" type="text" onkeyup="value=value.replace(/^(0+)|[^\d]+/g,'')" name="firstcol" style="width: 20%">-
-	<input id="cDown" type="text" onkeyup="value=value.replace(/^(0+)|[^\d]+/g,'')" name="endcol" style="width: 20%"><br><br>
+	<input id="cDown" type="text" onkeyup="value=value.replace(/^(0+)|[^\d]+/g,'')" name="endcol" style="width: 20%">（1-60）<br><br>
 	<input type="submit" value="提交" onclick="info_vm.choose_row_col()"/>
 	<br>
 	<h3>ps:</h3>
@@ -66,7 +66,7 @@
     <div>
       <div class="input-item">
         <button id="clickOn" class="btn" style="margin-right:1rem;" onclick="openInfo()">打开信息窗体</button>
-		<button id="clickOff" class="btn" onclick="closeInfo();info_vm.table_info_download();">关闭信息窗体</button>
+		<button id="clickOff" class="btn" onclick="closeInfo();">关闭信息窗体</button>
 		<button id="clickOn2" class="btn" style="margin-right:1rem;" onclick="openInfo2()">打开下载窗体</button>
 		<button id="clickOn3" class="btn"  onclick="openInfo3()">地图快速选择</button>
       </div>
