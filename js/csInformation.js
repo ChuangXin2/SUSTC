@@ -142,6 +142,29 @@ var info_vm = {
         //         window.event.cancelBubble = true;
         // });
 	},
+	choose_row_col: function (){
+		var r_left = $('#rLeft').val();
+		var r_right = $('#rRight').val();
+		var c_up = $('#cUp').val();
+		var c_down = $('#cDown').val();
+		if (parseInt(r_left) > parseInt(r_right)){
+			var r_temp = r_right;
+			r_right = r_left;
+			r_left = r_temp;
+		}
+		if (parseInt(c_up) > parseInt(c_down)){
+			var c_temp = c_up;
+			c_up = c_down;
+			c_down = c_temp;
+		}
+		if(parseInt(c_up) > 400 || parseInt(r_left) > 400){
+			alert("0; 0; 0; 0")
+		}else{
+			if(parseInt(c_down) > 400) c_down = 400;
+			if(parseInt(r_right) > 400) r_right = 400;
+			alert(r_left+"; "+r_right+"; "+c_up+"; "+c_down);
+ 		}
+	},
 };
 
 $(function () {
