@@ -2,7 +2,7 @@ var center_arrList = [];
 var center_pointsObj = {};
 var cityObj = {
     'beijing': {
-        center: [116.387175, 39.876405],
+        center: [116.387175, 39.976405],
         left_lng: 115.366776,
         left_lat: 41.086731,
         right_lng: 117.542069,
@@ -95,7 +95,7 @@ function init(city) {
     center_northEast = new AMap.LngLat(center_right_lng, center_right_lat); //右下
     map = new AMap.Map('container', {
         center: cityObj[grad_city].center,
-        zoom: 8
+        zoom: 10
     });
     map.on('click', function (e) {
         alert(e.lnglat.getLng() + ',' + e.lnglat.getLat())
