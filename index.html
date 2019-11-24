@@ -34,12 +34,41 @@
 		</tr>
 	</table>
 </div>
-<div class="input-card" style="width:18rem">
+<div id="download" class="input-card" style="position:absolute;left:50px;top:50px;width:38rem;height:25rem; overflow:auto;display:none">
+	<h3>下载</h3>
+	<br>
+	<h1>展示信息处（测试中）</h1>
+	<label><input name="down_choose" type="checkbox" value="" />畅通占比 </label> 
+	<label><input name="down_choose" type="checkbox" value="" />缓刑占比 </label> 
+	<label><input name="down_choose" type="checkbox" value="" />拥堵占比 </label> 
+	<label><input name="down_choose" type="checkbox" value="" />未知占比 </label> 
+	<br><br><br>
+	<button id="download3" class="btn" style="margin-right:1rem;" >下载1</button>
+	<button id="download4" class="btn" style="margin-right:1rem;" >下载2</button>
+</div>
+<div id="choose" class="input-card" style="position:absolute;left:50px;top:50px;width:38rem;height:30rem; overflow:auto;display:none">
+	<h3>快速选择</h3>
+	Row:<br>
+	<input id="rLeft" type="text" onkeyup="value=value.replace(/^(0+)|[^\d]+/g,'')" name="firstrow" style="width: 20%">-
+	<input id="rRight" type="text" onkeyup="value=value.replace(/^(0+)|[^\d]+/g,'')" name="endrow" style="width: 20%">（1-60）<br>
+	Col:<br>
+	<input id="cUp" type="text" onkeyup="value=value.replace(/^(0+)|[^\d]+/g,'')" name="firstcol" style="width: 20%">-
+	<input id="cDown" type="text" onkeyup="value=value.replace(/^(0+)|[^\d]+/g,'')" name="endcol" style="width: 20%">（1-60）<br><br>
+	<input type="submit" value="提交" onclick="info_vm.choose_row_col()"/>
+	<br>
+	<h3>ps:</h3>
+	<h3>只能输入正整数，可不按大小顺序输入，系统会自动排好</h3>
+	<h3>若某行或某列最小值大于可查询范围时全返回0</h3>
+	<h3>若某行或某列最大值大于可查询范围时该值返回最大值</h3>
+</div>
+<div class="input-card" style="width:18rem;height:9rem">
     <h4>信息窗体的打开</h4>
     <div>
       <div class="input-item">
         <button id="clickOn" class="btn" style="margin-right:1rem;" onclick="openInfo()">打开信息窗体</button>
-		<button id="clickOff" class="btn" onclick="closeInfo()">关闭信息窗体</button>
+		<button id="clickOff" class="btn" onclick="closeInfo();closeInfo2();closeInfo3()">关闭信息窗体</button>
+		<button id="clickOn2" class="btn" style="margin-right:1rem;" onclick="openInfo2()">打开下载窗体</button>
+		<button id="clickOn3" class="btn"  onclick="openInfo3()">地图快速选择</button>
       </div>
     </div>
 </div>

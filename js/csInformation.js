@@ -10,6 +10,8 @@ var keys = {
 	"info-hour9":"c0ac36cf13fc327203e18939dd859fb9",
 	"info-hour14":"57c0e2e033ba005979d295567c6fd0c0",
 };
+const jsonData = [
+];
 
 var info_vm = {
     GLOBALIP: '',
@@ -36,6 +38,23 @@ var info_vm = {
 			success: function (data) {
 				console.log(data);
 				info_vm.table_info(bound,data);
+				new_bound = '（' + bound.northeast.P + '，' + bound.northeast.R + '）；（' +
+							bound.southwest.P + '，' + bound.southwest.R + '）';
+				var traf_info = data.trafficinfo;
+				var evaluation = traf_info.evaluation;
+				var info = {
+					new_bound:new_bound,
+					area_description:traf_info.description,
+					description:evaluation.description,
+					expedite:evaluation.expedite,
+					congested:evaluation.congested,
+					blocked:evaluation.blocked,
+					unknown:evaluation.unknown,
+					status:evaluation.status
+				};
+				jsonData.push(info);
+				console.log(jsonData);
+				console.log(new_bound);
 				return data;
 			},
 			error: function () {
@@ -44,18 +63,8 @@ var info_vm = {
 		});
 	},
 	table_info:function(bound,data){
-		// var device_state_info = '<tr>\n' +
-		// 	'\t\t\t<th>区域</th>\n' +
-		// 	'\t\t\t<th>描述</th>\n' +
-		// 	'\t\t\t<th>畅通占比</th>\n' +
-		// 	'\t\t\t<th>缓行占比</th>\n' +
-		// 	'\t\t\t<th>拥堵占比</th>\n' +
-		// 	'\t\t\t<th>未知占比</th>\n' +
-		// 	'\t\t</tr>';
-		// device_state_info += '<tr></tr>>';
 		var traf_info = data.trafficinfo;
 		var evaluation = traf_info.evaluation;
-		var ex = data;
 		var a=document.getElementById('t1');
 		var a0=a.insertRow(-1);
 		var a1=a0.insertCell(0);
@@ -64,13 +73,98 @@ var info_vm = {
 		var a4=a0.insertCell(3);
 		var a5=a0.insertCell(4);
 		var a6=a0.insertCell(5);
-		a1.innerHTML = bound;
+		boundstr = ""+bound;
+		boundspl = boundstr.split(';');
+		a1.innerHTML = boundspl[0]+"<br />"+boundspl[1]+"<br />";
 		a2.innerHTML = traf_info.description;
 		a3.innerHTML = evaluation.expedite;
 		a4.innerHTML = evaluation.congested;
 		a5.innerHTML = evaluation.blocked;
 		a6.innerHTML = evaluation.unknown;
-	}
+	},
+	row_delete:function(bound){
+		boundstr = ""+bound;
+		boundspl = boundstr.split(';');
+		a_bounds = boundspl[0]+""+boundspl[1];
+		var t_size = $("#t1").find("tr").length;
+		var f_row = 0;
+		for(i = 0; i < t_size-1; i++){
+			var f_bounds = $("#t1 tr:gt(0):eq("+i+") td:eq(0)").text();
+			if(f_bounds == a_bounds){
+				f_row = i;
+				break;
+			}
+		}
+		$("#t1 tr:gt(0):eq("+f_row+")").remove();
+	},
+    table_info_download: function () {
+    	var Str = `bound,area description,description,expedite,congested,blocked,unknown,status\n`;
+    	for(var i = 0 ; i < jsonData.length ; i++ ){
+			for(var item in jsonData[i]){
+				Str += `${jsonData[i][item] + '\t'},`;
+			}
+			Str += '\n';
+        }
+    	var url = 'data:text/csv;charset=utf-8,\ufeff' + encodeURIComponent(Str);
+        // var blob = new Blob([this.response],{type: 'application/vnd.ms-excel'});
+        // var href = window.URL.createObjectURL(blob); // 创建下载的链接
+        var download = document.createElement('a'); // 转换完成，创建一个a标签用于下载
+        var nowDate = new Date();
+        var date = '' + nowDate.getFullYear() + (nowDate.getMonth()+1) + nowDate.getDate();
+        date += '_' + nowDate.getHours() + nowDate.getMinutes() + nowDate.getSeconds();
+        download.download = '车流信息_' + date + '.xls';
+        download.href = url; // 转成本地连接到blob文本
+        document.body.appendChild(download);
+        download.click();
+        // 然后移除
+        document.body.removeChild(download);
+        // window.URL.revokeObjectURL(href); // 释放掉blob对象
+        // $('.rc_pop_body').on('click', '#rc_report_list_device_state', function (e) {
+        //     var xhr = new XMLHttpRequest();
+        //     xhr.responseType = "blob";
+        //     xhr.open('GET',left_vm.GLOBALIP + "/export/facility",true);
+        //     xhr.setRequestHeader('Content-Type', 'application/octet-stream');
+        //     xhr.setRequestHeader('token', sessionStorage.tx_token);
+        //     xhr.onload = function(){
+        //         if(this.status == 200 && this.readyState == 4){
+        //             // console.log(this.response);
+        //         } else if(this.status == 404){
+        //             console.log("请求的页面不存在");
+        //         } else {
+        //             // console.log(this.response);
+        //         }
+        //      };
+        //     xhr.send(null);
+		//
+        //     if ( e && e.stopPropagation )
+        //         e.stopPropagation();
+        //     else
+        //         window.event.cancelBubble = true;
+        // });
+	},
+	choose_row_col: function (){
+		var r_left = $('#rLeft').val();
+		var r_right = $('#rRight').val();
+		var c_up = $('#cUp').val();
+		var c_down = $('#cDown').val();
+		if (parseInt(r_left) > parseInt(r_right)){
+			var r_temp = r_right;
+			r_right = r_left;
+			r_left = r_temp;
+		}
+		if (parseInt(c_up) > parseInt(c_down)){
+			var c_temp = c_up;
+			c_up = c_down;
+			c_down = c_temp;
+		}
+		if(parseInt(c_up) > 60 || parseInt(r_left) > 60){
+			alert("0; 0; 0; 0")
+		}else{
+			if(parseInt(c_down) > 60) c_down = 60;
+			if(parseInt(r_right) > 60) r_right = 60;
+			alert(r_left+"; "+r_right+"; "+c_up+"; "+c_down);
+ 		}
+	},
 };
 
 $(function () {
