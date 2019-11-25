@@ -95,7 +95,7 @@ function init(city) {
     center_northEast = new AMap.LngLat(center_right_lng, center_right_lat); //右下
     map = new AMap.Map('container', {
         center: cityObj[grad_city].center,
-        zoom: 10
+        zoom: 11
     });
     map.on('click', function (e) {
         alert(e.lnglat.getLng() + ',' + e.lnglat.getLat())
@@ -141,7 +141,7 @@ function drawrectangle(southWest, northEast, i, j, center_x_total, center_y_tota
 
     rectangle.on('click', (data) => {//绑定左键事件
         info_vm.info_show_data(rectangle.getBounds());
-        alert(i*center_x_total + j + 1); //弹出方块索引
+        //alert(i*center_x_total + j + 1); //弹出方块索引
         openInfo();
         var rectangle2 = new AMap.Rectangle({
             bounds: bounds,

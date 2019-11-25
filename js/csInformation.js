@@ -96,6 +96,8 @@ var info_vm = {
 			}
 		}
 		$("#t1 tr:gt(0):eq("+f_row+")").remove();
+		jsonData.pop(f_row);
+		console.log(jsonData);
 	},
     table_info_download: function () {
     	var Str = `bound,area description,description,expedite,congested,blocked,unknown,status\n`;
