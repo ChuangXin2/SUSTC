@@ -16,6 +16,7 @@ function closeInfo() {
 function openInfo2(){
 	closeInfo();
 	closeInfo3();
+	getYMD();
 	document.getElementById('download').style.display='block';
 }
 function closeInfo2() {
@@ -28,6 +29,14 @@ function openInfo3(){
 }
 function closeInfo3() {
 	document.getElementById('choose').style.display='none';
+}
+function getYMD() {
+	var date = new Date();
+	var Y = date.getFullYear();
+    var M = date.getMonth()+1;
+	var D = date.getDate();
+	document.getElementById('ymd').value=Y+'-'+M+'-'+D;
+	document.getElementById('ymd2').value=Y+'-'+M+'-'+D;
 }
 document.getElementById("clickOn").onclick = openInfo;
 document.getElementById("clickOff").onclick = closeInfo;
