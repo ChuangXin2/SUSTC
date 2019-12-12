@@ -120,29 +120,6 @@ var info_vm = {
         download.click();
         // 然后移除
         document.body.removeChild(download);
-        // window.URL.revokeObjectURL(href); // 释放掉blob对象
-        // $('.rc_pop_body').on('click', '#rc_report_list_device_state', function (e) {
-        //     var xhr = new XMLHttpRequest();
-        //     xhr.responseType = "blob";
-        //     xhr.open('GET',left_vm.GLOBALIP + "/export/facility",true);
-        //     xhr.setRequestHeader('Content-Type', 'application/octet-stream');
-        //     xhr.setRequestHeader('token', sessionStorage.tx_token);
-        //     xhr.onload = function(){
-        //         if(this.status == 200 && this.readyState == 4){
-        //             // console.log(this.response);
-        //         } else if(this.status == 404){
-        //             console.log("请求的页面不存在");
-        //         } else {
-        //             // console.log(this.response);
-        //         }
-        //      };
-        //     xhr.send(null);
-		//
-        //     if ( e && e.stopPropagation )
-        //         e.stopPropagation();
-        //     else
-        //         window.event.cancelBubble = true;
-        // });
 	},
 	choose_row_col: function (){
 		var r_left = $('#rLeft').val();
@@ -167,6 +144,24 @@ var info_vm = {
 			alert(r_left+"; "+r_right+"; "+c_up+"; "+c_down);
  		}
 	},
+	openFileIIs:function(){
+    	var filename = 'test.txt';
+    	var file = new File(['aaaaa'], 'ant.txt');
+    	var blob = file.slice(0,4);
+    	var reader = new FileReader();
+    	var url = './data/data.json';
+		$.getJSON(url, function (data){
+      	 	var strHtml = "";
+		 	$.each(data, function (infoIndex, info){
+		 		strHtml += "ID：" + info["id"] + "<br>";
+		 		strHtml += "姓名：" + info["name"] + "<br>";
+		 		strHtml += "比例：" + info["rate"] + "<br>";
+		 		strHtml += "<hr>"
+		 	});
+			console.log(data);
+		    //显示处理后的数据
+		});
+	}
 };
 
 $(function () {
