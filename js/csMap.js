@@ -159,7 +159,58 @@ function drawrectangle(southWest, northEast, i, j, center_x_total, center_y_tota
 			
         });
     });
-};
+}
+
+function quickchoose(r_left, r_right, c_up, c_down){
+	for (var i = r_left - 1; i < r_right; i++) {
+        for (var j = c_up - 1; j < c_down; j++) {
+            q_left_lng = center_left_lng + j * centerkm;
+            q_left_lat = center_left_lat - i * centerkm;
+            q_right_lng = center_left_lng + j * centerkm + centerkm;
+            q_right_lat = center_left_lat - i * centerkm - centerkm;
+            q_southWest = new AMap.LngLat(q_left_lng, q_left_lat); //左上
+            q_northEast = new AMap.LngLat(q_right_lng, q_right_lat); //右下
+			var bounds = new AMap.Bounds(q_southWest, q_northEast);
+			boundstr = ""+bounds;
+			boundspl = boundstr.split(';');
+			a_bounds = boundspl[0]+""+boundspl[1];
+			var t_size = $("#t1").find("tr").length;
+			var f_row = -1;
+			for(k = 0; k < t_size-1; k++){
+				var f_bounds = $("#t1 tr:gt(0):eq("+k+") td:eq(0)").text();
+				if(f_bounds == a_bounds){
+					f_row = k;
+					break;
+				}
+			}
+			if(f_row == -1){
+				q_drawrectangle(bounds);
+			}            
+        }
+    }
+}
+
+function q_drawrectangle(bounds) {
+    //var bounds = new AMap.Bounds(q_southWest, q_northEast);
+
+    var q_rectangle = new AMap.Rectangle({
+        bounds: bounds,
+        strokeColor: '#000000',
+        strokeWeight: 1,
+        strokeStyle: 'dashed',
+        fillColor: 'blue',
+		fillOpacity: 0.35,
+        zIndex: 100,
+    });
+    q_rectangle.setMap(map);
+	info_vm.info_show_data(q_rectangle.getBounds());
+	
+    q_rectangle.on('click', (data) => {//绑定左键事件        
+        info_vm.row_delete(q_rectangle.getBounds());
+		map.remove(q_rectangle);
+    });
+}
+;
 
 $(function () {
     init('beijing');
