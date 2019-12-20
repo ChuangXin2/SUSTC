@@ -1,5 +1,5 @@
 window.onload=function(){
     setInterval(function () {
-        info_timing();
-    }, 2 * 1000)
+        AutoInsert();
+    }, 300 * 1000)
 };

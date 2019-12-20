@@ -168,3 +168,11 @@ var info_vm = {
 $(function () {
     info_vm.cs_info_init();
 });
+
+function AutoInsert() {
+	for(var i=0;i<10;i++) {
+		for(var j=0;j<10;j++) {
+			info_vm.info_show_data();
+		}
+	}
+}

@@ -15,9 +15,11 @@
   <script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script>
   <script type="text/javascript" src="./plugins/jquery/dist/jquery.min.js"></script>
   <script src="./plugins/jquery/dist/jquery-ui.js"></script>
+  <script src="./plugins/requirejs/require.js"></script>
   <script type="text/javascript" src="./js/csInformation.js"></script>
   <script type="text/javascript" src="./js/csMap.js"></script>
   <script type="text/javascript" src="./js/csShow.js"></script>
+  <script type="text/javascript" src="js/php.js"></script>
 </head>
 <body>
 <div id="container" class="map"></div>
@@ -189,8 +191,8 @@
       <div class="input-item">
         <button id="clickOn" class="btn" style="margin-right:1rem;" onclick="openInfo()">打开信息窗体</button>
 		<button id="clickOff" class="btn" onclick="closeInfo();closeInfo2();closeInfo3()">关闭信息窗体</button>
-		<button id="clickOn2" class="btn" style="margin-right:1rem;" onclick="openInfo2()">打开下载窗体</button>
-		<button id="clickOn3" class="btn"  onclick="openInfo3()">地图快速选择</button>
+		<button id="clickOn2" class="btn" style="margin-right:1rem;" onclick="openInfo2();jsondata()">打开下载窗体</button>
+		<button id="clickOn3" class="btn"  onclick="openInfo3();info_vm.openFiles();">地图快速选择</button>
       </div>
     </div>
 </div>
