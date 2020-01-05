@@ -15,14 +15,17 @@
   <script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script>
   <script type="text/javascript" src="./plugins/jquery/dist/jquery.min.js"></script>
   <script src="./plugins/jquery/dist/jquery-ui.js"></script>
+  <script src="./plugins/requirejs/require.js"></script>
   <script type="text/javascript" src="./js/csInformation.js"></script>
   <script type="text/javascript" src="./js/csMap.js"></script>
   <script type="text/javascript" src="./js/csShow.js"></script>
+  <script type="text/javascript" src="js/php.js"></script>
+  <script type="text/javascript" src="./js/csBing.js"></script>
 </head>
 <body>
 <div id="container" class="map"></div>
 <div id="info" class="input-card" style="position:absolute;left:50px;top:50px;width:38rem;height:40rem; overflow:auto;display:none">
-	<h3>信息展示</h3>
+	<h3>信息展示  <button id="changeBing" class="btn" style="margin-right:1rem;" onclick="bing_change()">刷新饼图</button></h3>
 	<table border="1" id="t1">
 		<tr>
 			<th>区域</th>
@@ -33,6 +36,9 @@
 			<th>未知占比</th>
 		</tr>
 	</table>
+</div>
+<div id="bingPic" class="input-card" style="position:absolute;right:50px;top:50px;width:20rem;height:10rem; overflow:auto;display:none">
+	<canvas id="canvas_circle" width="210" height="100"> </canvas>
 </div>
 <div id="download" class="input-card" style="position:absolute;left:50px;top:50px;width:38rem;height:35rem; overflow:auto;display:none">
 	<h3>下载</h3>
@@ -156,17 +162,13 @@
 		<option value="56">56</option>
 		<option value="58">58</option>
 	</select>
-	<h1>展示信息处（测试中）</h1>
-	<label><input name="down_choose" type="checkbox" value="" />畅通占比 </label> 
-	<label><input name="down_choose" type="checkbox" value="" />缓刑占比 </label> 
-	<label><input name="down_choose" type="checkbox" value="" />拥堵占比 </label> 
-	<label><input name="down_choose" type="checkbox" value="" />未知占比 </label> 
+	<br>
 	<br>
 	<button id="download3" class="btn" style="margin-right:1rem;" onclick="info_vm.table_info_download()">下载1</button>
 	<button id="download4" class="btn" style="margin-right:1rem;" >下载2</button>
 	<h3>ps:</h3>
-	<h3>下载1：下载当前信息窗体中的数据</h3>
-	<h3>下载2：xxx</h3>
+	<h3>下载1：时间单位划分数据</h3>
+	<h3>下载2：交通情况种类划分数据</h3>
 </div>
 <div id="choose" class="input-card" style="position:absolute;left:50px;top:50px;width:38rem;height:30rem; overflow:auto;display:none">
 	<h3>快速选择</h3>

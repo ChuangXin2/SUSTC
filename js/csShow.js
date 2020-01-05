@@ -9,9 +9,11 @@ function openInfo(){
 	closeInfo2();
 	closeInfo3();
 	document.getElementById('info').style.display='block';
+	document.getElementById('bingPic').style.display='block';
 }
 function closeInfo() {
 	document.getElementById('info').style.display='none';
+	document.getElementById('bingPic').style.display='none';
 }
 function openInfo2(){
 	closeInfo();

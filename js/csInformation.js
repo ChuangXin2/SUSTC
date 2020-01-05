@@ -78,6 +78,14 @@ var info_vm = {
 		a1.innerHTML = boundspl[0]+"<br />"+boundspl[1]+"<br />";
 		a2.innerHTML = traf_info.description;
 		a3.innerHTML = evaluation.expedite;
+		expedite_str = ""+evaluation.expedite;
+		expedite_f = parseFloat(expedite_str)/100;
+		if(expedite_f >= 0.75){
+			addbing1();
+		}			
+		else {
+			addbing2();
+		}
 		a4.innerHTML = evaluation.congested;
 		a5.innerHTML = evaluation.blocked;
 		a6.innerHTML = evaluation.unknown;
@@ -94,6 +102,14 @@ var info_vm = {
 				f_row = i;
 				break;
 			}
+		}
+		expedite_str = $("#t1 tr:gt(0):eq("+f_row+") td:eq(2)").text();
+		expedite_f = parseFloat(expedite_str)/100;
+		if(expedite_f >= 0.75){
+			minbing1();
+		}			
+		else {
+			minbing2();
 		}
 		$("#t1 tr:gt(0):eq("+f_row+")").remove();
 		jsonData.pop(f_row);
@@ -120,29 +136,6 @@ var info_vm = {
         download.click();
         // 然后移除
         document.body.removeChild(download);
-        // window.URL.revokeObjectURL(href); // 释放掉blob对象
-        // $('.rc_pop_body').on('click', '#rc_report_list_device_state', function (e) {
-        //     var xhr = new XMLHttpRequest();
-        //     xhr.responseType = "blob";
-        //     xhr.open('GET',left_vm.GLOBALIP + "/export/facility",true);
-        //     xhr.setRequestHeader('Content-Type', 'application/octet-stream');
-        //     xhr.setRequestHeader('token', sessionStorage.tx_token);
-        //     xhr.onload = function(){
-        //         if(this.status == 200 && this.readyState == 4){
-        //             // console.log(this.response);
-        //         } else if(this.status == 404){
-        //             console.log("请求的页面不存在");
-        //         } else {
-        //             // console.log(this.response);
-        //         }
-        //      };
-        //     xhr.send(null);
-		//
-        //     if ( e && e.stopPropagation )
-        //         e.stopPropagation();
-        //     else
-        //         window.event.cancelBubble = true;
-        // });
 	},
 	choose_row_col: function (){
 		var r_left = $('#rLeft').val();
@@ -168,6 +161,24 @@ var info_vm = {
 			quickchoose(r_left, r_right, c_up, c_down);
  		}
 	},
+	openFileIIs:function(){
+    	var filename = 'test.txt';
+    	var file = new File(['aaaaa'], 'ant.txt');
+    	var blob = file.slice(0,4);
+    	var reader = new FileReader();
+    	var url = './data/data.json';
+		$.getJSON(url, function (data){
+      	 	var strHtml = "";
+		 	$.each(data, function (infoIndex, info){
+		 		strHtml += "ID：" + info["id"] + "<br>";
+		 		strHtml += "姓名：" + info["name"] + "<br>";
+		 		strHtml += "比例：" + info["rate"] + "<br>";
+		 		strHtml += "<hr>"
+		 	});
+			console.log(data);
+		    //显示处理后的数据
+		});
+	}
 };
 
 $(function () {
