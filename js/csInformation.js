@@ -78,6 +78,14 @@ var info_vm = {
 		a1.innerHTML = boundspl[0]+"<br />"+boundspl[1]+"<br />";
 		a2.innerHTML = traf_info.description;
 		a3.innerHTML = evaluation.expedite;
+		expedite_str = ""+evaluation.expedite;
+		expedite_f = parseFloat(expedite_str)/100;
+		if(expedite_f >= 0.75){
+			addbing1();
+		}			
+		else {
+			addbing2();
+		}
 		a4.innerHTML = evaluation.congested;
 		a5.innerHTML = evaluation.blocked;
 		a6.innerHTML = evaluation.unknown;
@@ -94,6 +102,14 @@ var info_vm = {
 				f_row = i;
 				break;
 			}
+		}
+		expedite_str = $("#t1 tr:gt(0):eq("+f_row+") td:eq(2)").text();
+		expedite_f = parseFloat(expedite_str)/100;
+		if(expedite_f >= 0.75){
+			minbing1();
+		}			
+		else {
+			minbing2();
 		}
 		$("#t1 tr:gt(0):eq("+f_row+")").remove();
 		jsonData.pop(f_row);
