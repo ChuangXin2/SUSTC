@@ -1,5 +1,6 @@
 var center_arrList = [];
 var center_pointsObj = {};
+var blocks = [];
 var cityObj = {
     'beijing': {
         center: [116.387175, 39.976405],
@@ -141,7 +142,8 @@ function drawrectangle(southWest, northEast, i, j, center_x_total, center_y_tota
 
     rectangle.on('click', (data) => {//绑定左键事件
         info_vm.info_show_data(rectangle.getBounds());
-        //alert(i*center_x_total + j + 1); //弹出方块索引
+        var mid_id = i*center_x_total + j + 1;
+        blocks.push(mid_id);
         openInfo();
         var rectangle2 = new AMap.Rectangle({
             bounds: bounds,

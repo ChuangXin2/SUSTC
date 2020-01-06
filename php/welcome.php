@@ -21,12 +21,16 @@ $dbname = "myDB";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
+
+$block_Id = 1;
+
 if ($conn->connect_error) {
     die("connect errpr: " . $conn->connect_error);
 }
-
-$sql = "select * from traffic where unix_timestamp(reg_date)>unix_timestamp('2020-01-05 10:05:00') and block_id=2;";
+//unix_timestamp(reg_date)>unix_timestamp('2020-01-05 10:05:00') and 
+$sql = "select * from traffic where block_id=$block_Id;";
 $retval = mysqli_query( $conn, $sql );
+
 $data=array();
 
 if(! $retval )

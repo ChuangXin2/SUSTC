@@ -33,7 +33,6 @@ $status = $result -> status;
 $description = $result -> description;
 $reg_date = $result -> reg_date;
 
-echo $result -> bound;
 
 /*
 $block_Id = 4;

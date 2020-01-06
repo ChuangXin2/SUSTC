@@ -14,59 +14,23 @@ var descrip = ['整体畅通','轻度拥堵','整体拥堵',''];
 
 
 function TestInsert() {
-	console.log(13-13%5)
+	var uploadData = "block_id="+1+"&time0=&"+time0+"time1="+time1;
+	var json =JSON.stringify(uploadData);
+	$.ajax({
+		type: 'POST',
+		async: false,
+		data: 'block_id=1',
+		url: 'php/welcome.php',
+		dataType: 'json',
+		success: function (data) {
+			console.log(data);
+			return data;
+		},
+		error: function () {
+			console.log("加载错误");
+		}
+	});
 }
-// function TestInsert() {
-//     var init_x = 116.081887;
-//     var init_x1 = 116.090896;
-//     var init_y = 40.278241;
-//     var init_y1 = 40.269232;
-// 	var di_x = init_x1 - init_x;
-// 	var di_y = init_y - init_y1;
-// 	var x_start = init_x;
-// 	var y_start = init_y;
-// 	var uploadData;
-// 	var bound = "116.289094,40.071034;116.298103,40.062025";
-// 	var reg_date = new Date("1/3/2019");
-// 	var url = 'https://restapi.amap.com/v3/traffic/status/rectangle?rectangle='+bound+'&&key=' + keys["info-hour2"];
-// 		$.ajax({
-// 			type: 'GET',
-// 			async: false,
-// 			data: {},
-// 			url: url,
-// 			dataType: 'json',
-// 			success: function (data) {
-// 				console.log(data);
-// 				var traf_info = data.trafficinfo;
-// 				var evaluation = traf_info.evaluation;
-// 				uploadData = {
-// 					"block_Id":1,
-//                     "block_des":traf_info.description,
-// 					"description":evaluation.description,
-// 					"expedite":evaluation.expedite,
-// 					"congested":evaluation.congested,
-// 					"blocked":evaluation.blocked,
-// 					"unknown":evaluation.unknown,
-// 					"status":evaluation.status,
-// 					"bound":bound,
-// 					"reg_date":reg_date
-// 				};
-// 				var json =JSON.stringify(uploadData);
-// 				var xhr = new XMLHttpRequest;
-// 				xhr.open('post', 'php/insert.php');
-// 				xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-// 				xhr.send("info=" + json);
-// 				xhr.onreadystatechange = function() {
-// 					if(xhr.readyState == 4 && (xhr.status == 200 || xhr.status ==304))  //响应完成并且响应码为200或304
-// 						alert(xhr.responseText);
-// 				};
-// 				return data;
-// 			},
-// 			error: function () {
-// 				console.log("加载错误");
-// 			}
-// 		});
-// }
 
 function TestGet() {
     var init_x = 116.081887;
@@ -79,13 +43,13 @@ function TestGet() {
 	var y_start = init_y;
 
 	var reg_date = new Date();
-	reg_date.setDate(4);
+	reg_date.setDate(1);
 	reg_date.setHours(0);
 	reg_date.setMinutes(0);
 	reg_date.setSeconds(0);
 	var month,date,hour,minutes;
 	reg_date.setHours(reg_date.getHours()+0);
-	var time_lim = 2*12*24;
+	var time_lim = 6*12*24;
 	for(t=0;t<time_lim;t++) {
 		month = reg_date.getMonth()+1;
 		if(month<10){

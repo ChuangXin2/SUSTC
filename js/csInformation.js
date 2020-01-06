@@ -116,6 +116,7 @@ var info_vm = {
 		console.log(jsonData);
 	},
     table_info_download: function () {
+    	// alert(blocks);
     	var Str = `bound,area description,description,expedite,congested,blocked,unknown,status\n`;
     	for(var i = 0 ; i < jsonData.length ; i++ ){
 			for(var item in jsonData[i]){
