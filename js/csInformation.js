@@ -144,35 +144,9 @@ var info_vm = {
 			//alert(r_left+" "+r_right+" "+c_up+" "+c_down);
 			quickchoose(r_left, r_right, c_up, c_down);
  		}
-	},
-	openFileIIs:function(){
-    	var filename = 'test.txt';
-    	var file = new File(['aaaaa'], 'ant.txt');
-    	var blob = file.slice(0,4);
-    	var reader = new FileReader();
-    	var url = './data/data.json';
-		$.getJSON(url, function (data){
-      	 	var strHtml = "";
-		 	$.each(data, function (infoIndex, info){
-		 		strHtml += "ID：" + info["id"] + "<br>";
-		 		strHtml += "姓名：" + info["name"] + "<br>";
-		 		strHtml += "比例：" + info["rate"] + "<br>";
-		 		strHtml += "<hr>"
-		 	});
-			console.log(data);
-		    //显示处理后的数据
-		});
 	}
 };
 
 $(function () {
     info_vm.cs_info_init();
 });
-
-function AutoInsert() {
-	for(var i=0;i<10;i++) {
-		for(var j=0;j<10;j++) {
-			info_vm.info_show_data();
-		}
-	}
-}

@@ -111,8 +111,8 @@ function init(city) {
 function drawCenterGrad(center_left_lng, center_left_lat, center_right_lng, center_right_lat, center_x, center_y) {
     var center_x_total = Math.floor(center_x / center_km);//首尾，故点多1
     var center_y_total = Math.floor(center_y / center_km);
-    for (var i = 0; i < center_x_total + 1; i++) {
-        for (var j = 0; j < center_y_total + 1; j++) {
+    for (var i = 0; i < center_x_total; i++) {
+        for (var j = 0; j < center_y_total; j++) {
             _left_lng = center_left_lng + j * centerkm;
             _left_lat = center_left_lat - i * centerkm;
             _right_lng = center_left_lng + j * centerkm + centerkm;

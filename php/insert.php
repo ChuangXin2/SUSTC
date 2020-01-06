@@ -13,27 +13,56 @@ $dbname = "myDB";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
+mysqli_query($conn,'set names uft8');
+
 if ($conn->connect_error) {
     die("connect errpr: " . $conn->connect_error);
 } 
 
-$block_Id = 4;
-$block_des = '±±Îå»·£º±±Ô·ÇÅ¸½½ü×Ô¶«ÏòÎ÷ĞĞÊ»»ºÂı¡£';
-$clear = 33.33;
-$amble = 33.33;
-$block = 33.33;
-$unkown = 0.01;
-$bound = '116.397202,39.989953;116.406211,39.980944';
+$info = $_POST["info"];
+$result = json_decode($info);
 
-// ²åÈëÊı¾İ
+$block_Id = $result -> block_Id;
+$block_des = $result -> block_des;
+$bound = $result -> bound;
+$expedite = $result -> expedite;
+$congested = $result -> congested;
+$blocked = $result -> blocked;
+$unknown = $result -> unknown;
+$status = $result -> status;
+$description = $result -> description;
+$reg_date = $result -> reg_date;
+
+echo $result -> bound;
+
+/*
+$block_Id = 4;
+$block_des = 'åŒ—äº”ç¯ï¼šåŒ—è‹‘æ¡¥é™„è¿‘è‡ªä¸œå‘è¥¿è¡Œé©¶ç¼“æ…¢ã€‚';
+$expedite = '33.33%';
+$congested = '33.33%';
+$blocked = '33.33%';
+$unknown = '0.01%';
+$status = 2;
+$bound = '116.397202,39.989953;116.406211,39.980944';
+$description = 'æ•´ä½“ç•…é€š';
+*/
+
+// æ’å…¥æ•°æ®
+/*
 $sql = "
-INSERT INTO test (block_Id, block_des, bound, clear, amble, block, unkown, reg_date)
+INSERT INTO traffic (block_Id, block_des, bound, expedite, congested, blocked, unknown, description, reg_date)
 VALUES 
-('$block_Id','$block_des', '$bound', '$clear','$amble','$block','$unkown','2019-12-20 16:00:00');";
+('$block_Id','$block_des', '$bound', '$expedite','$congested','$blocked','$unknown','$description','2019-12-20 16:00:00');";
+*/
+$sql = "
+INSERT INTO traffic (block_Id, block_des, bound, expedite, congested, blocked, unknown, status, description, reg_date)
+VALUES 
+('$block_Id','$block_des', '$bound', '$expedite','$congested','$blocked','$unknown','$status','$description','$reg_date');";
+
 $retval = mysqli_query( $conn, $sql );
 if(! $retval )
 {
-    die('ÎŞ·¨¶ÁÈ¡Êı¾İ: ' . mysqli_error($conn));
+    die('æ— æ³•è¯»å–æ•°æ®: ' . mysqli_error($conn));
 }
 else{
     echo "Insert created successfully";

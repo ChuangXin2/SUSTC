@@ -5,10 +5,11 @@ function writeFile($row) {
 	$data = array();
 	$data['id'] = $row['block_id'];
 	$data['description'] = $row['block_des'];
-	$data['clear'] = $row['clear'];
-	$data['amble'] = $row['amble'];
-	$data['block'] = $row['block'];
-	$data['unkown'] = $row['unkown'];
+	$data['expedite'] = $row['expedite'];
+	$data['congested'] = $row['congested'];
+	$data['blocked'] = $row['blocked'];
+	$data['unknown'] = $row['unknown'];
+	$data['status'] = $row['status'];
 	$data['reg_date'] = $row['reg_date'];
 	return $data;
 }
@@ -24,27 +25,23 @@ if ($conn->connect_error) {
     die("connect errpr: " . $conn->connect_error);
 }
 
-$sql = "select * from test;";
+$sql = "select * from traffic where unix_timestamp(reg_date)>unix_timestamp('2020-01-05 10:05:00') and block_id=2;";
 $retval = mysqli_query( $conn, $sql );
-$data = array();
+$data=array();
+
 if(! $retval )
 {
     die('无法读取数据: ' . mysqli_error($conn));
 }
-echo '<table border="1"><tr><td>教程 ID</td><td>标题</td><td>占比</td><td>占比</td><td>占比</td><td>占比</td><td>日期</td></tr>';
 while($row = mysqli_fetch_array($retval, MYSQLI_ASSOC)) {
-	echo "<tr><td> {$row['block_id']}</td> ".
-		 "<td>{$row['block_des']} </td> ".
-		 "<td>{$row['bound']} </td> ".
-		 "<td>{$row['clear']} </td> ".
-		 "<td>{$row['amble']} </td> ".
-		 "<td>{$row['block']} </td> ".
-		 "<td>{$row['unkown']} </td> ".
-		 "<td>{$row['reg_date']} </td> ".
-		 "</tr>";
-	$data = writeFile($row);
+	$arrInfo=array();
+	$item=array('block_Id'=>$row['block_id'],'block_des'=>urlencode($row["block_des"]),'bound'=>$row['bound'],	'expedite'=>$row["expedite"],'congested'=>$row["congested"],
+	'blocked'=>$row["blocked"],'unknown'=>$row["unknown"],'status'=>$row["status"],'description'=>urlencode($row["description"]),'reg_date'=>$row["reg_date"]);
+	array_push($data,$item);
 }
-echo '</table>';
+$json=urldecode(json_encode($data)) ;
+echo $json;
 
+mysqli_free_result($retval);
 mysqli_close($conn);
 ?>
