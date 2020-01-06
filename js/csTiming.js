@@ -89,5 +89,5 @@ window.onload=function(){
     setInterval(function () {
         AutoInsert();
         console.log("Timing");
-    }, 500 * 1000)
+    }, 300 * 1000)
 };
