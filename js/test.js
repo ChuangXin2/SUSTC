@@ -14,22 +14,42 @@ var descrip = ['整体畅通','轻度拥堵','整体拥堵',''];
 
 
 function TestInsert() {
-	var uploadData = "block_id="+1+"&time0=&"+time0+"time1="+time1;
-	var json =JSON.stringify(uploadData);
-	$.ajax({
-		type: 'POST',
-		async: false,
-		data: 'block_id=1',
-		url: 'php/welcome.php',
-		dataType: 'json',
-		success: function (data) {
-			console.log(data);
-			return data;
-		},
-		error: function () {
-			console.log("加载错误");
-		}
-	});
+		var time1 = '2020-01-06 10:40:00';
+		var time2 = '2020-01-06 11:10:00';
+		var uploadData = {
+			"block_Id":1,
+			"time1":time1,
+			"time2":time2
+		};
+		var json =JSON.stringify(uploadData);
+			console.log(time1);
+		console.log(time2);
+		$.ajax({
+			type: 'POST',
+			async: false,
+			data: 'info='+json,
+			url: 'php/getinfo.php',
+			dataType: 'json',
+			success: function (data) {
+				console.log(data);
+				return data;
+			},
+			error: function () {
+				console.log("加载错误");
+			}
+		});
+				// var uploadData = {
+				// 	"block_Id":1,
+				// };
+				// var json =JSON.stringify(uploadData);
+				// var xhr = new XMLHttpRequest;
+				// xhr.open('post', 'php/newinsert.php');
+				// xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+				// xhr.send("info=" + json);
+				// xhr.onreadystatechange = function() {
+				// 	if(xhr.readyState == 4 && (xhr.status == 200 || xhr.status ==304))  //响应完成并且响应码为200或304
+				// 		console.log(xhr.responseText);
+				// };
 }
 
 function TestGet() {

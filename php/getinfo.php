@@ -23,30 +23,27 @@ $info = $_POST["info"];
 $result = json_decode($info);
 
 $block_Id = $result -> block_Id;
-$block_des = $result -> block_des;
-$bound = $result -> bound;
-$expedite = $result -> expedite;
-$congested = $result -> congested;
-$blocked = $result -> blocked;
-$unknown = $result -> unknown;
-$status = $result -> status;
-$description = $result -> description;
-$reg_date = $result -> reg_date;
-
+$time1 = $result -> time1;
+$time2 = $result -> time2;
 
 // 插入数据
-$sql = "
-INSERT INTO traffic (block_Id, block_des, bound, expedite, congested, blocked, unknown, status, description, reg_date)
-VALUES 
-('$block_Id','$block_des', '$bound', '$expedite','$congested','$blocked','$unknown','$status','$description','$reg_date');";
+$sql = "select * from traffic where block_id=$block_Id and unix_timestamp(reg_date)>unix_timestamp('$time1') and unix_timestamp(reg_date)<unix_timestamp('$time2');";
 
-$retval = mysqli_query( $conn, $sql );
+$retval = mysqli_query( $conn, $sql);
+$data=array();
 if(! $retval )
 {
     die('无法读取数据: ' . mysqli_error($conn));
 }
 else{
-    echo "Insert created successfully";
+	while($row = mysqli_fetch_array($retval, MYSQLI_ASSOC)) {
+		$arrInfo=array();
+		$item=array('block_Id'=>$row['block_id'],'block_des'=>urlencode($row["block_des"]),'bound'=>$row['bound'],	'expedite'=>$row["expedite"],'congested'=>$row["congested"],
+		'blocked'=>$row["blocked"],'unknown'=>$row["unknown"],'status'=>$row["status"],'description'=>urlencode($row["description"]),'reg_date'=>$row["reg_date"]);
+		array_push($data,$item);
+	}
+	$json=urldecode(json_encode($data)) ;
+	echo $json;
 }
 mysqli_close($conn);
 ?>

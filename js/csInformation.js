@@ -10,8 +10,10 @@ var keys = {
 	"info-hour9":"c0ac36cf13fc327203e18939dd859fb9",
 	"info-hour14":"57c0e2e033ba005979d295567c6fd0c0",
 };
-const jsonData = [
-];
+const jsonData = [];
+var downloadData = [];
+var arr_info = ['block_Id','bound','block_des','description','expedite','congested','blocked','unknown','status'];
+var arr_info1 = ['expedite','congested','blocked','unknown'];
 
 var info_vm = {
     GLOBALIP: '',
@@ -36,7 +38,6 @@ var info_vm = {
 			url: url,
 			dataType: 'json',
 			success: function (data) {
-				console.log(data);
 				info_vm.table_info(bound,data);
 				new_bound = '（' + bound.northeast.P + '，' + bound.northeast.R + '）；（' +
 							bound.southwest.P + '，' + bound.southwest.R + '）';
@@ -53,8 +54,8 @@ var info_vm = {
 					status:evaluation.status
 				};
 				jsonData.push(info);
-				console.log(jsonData);
-				console.log(new_bound);
+				// console.log(jsonData);
+				// console.log(new_bound);
 				return data;
 			},
 			error: function () {
@@ -113,30 +114,8 @@ var info_vm = {
 		}
 		$("#t1 tr:gt(0):eq("+f_row+")").remove();
 		jsonData.pop(f_row);
-		console.log(jsonData);
-	},
-    table_info_download: function () {
-    	// alert(blocks);
-    	var Str = `bound,area description,description,expedite,congested,blocked,unknown,status\n`;
-    	for(var i = 0 ; i < jsonData.length ; i++ ){
-			for(var item in jsonData[i]){
-				Str += `${jsonData[i][item] + '\t'},`;
-			}
-			Str += '\n';
-        }
-    	var url = 'data:text/csv;charset=utf-8,\ufeff' + encodeURIComponent(Str);
-        // var blob = new Blob([this.response],{type: 'application/vnd.ms-excel'});
-        // var href = window.URL.createObjectURL(blob); // 创建下载的链接
-        var download = document.createElement('a'); // 转换完成，创建一个a标签用于下载
-        var nowDate = new Date();
-        var date = '' + nowDate.getFullYear() + (nowDate.getMonth()+1) + nowDate.getDate();
-        date += '_' + nowDate.getHours() + nowDate.getMinutes() + nowDate.getSeconds();
-        download.download = '车流信息_' + date + '.xls';
-        download.href = url; // 转成本地连接到blob文本
-        document.body.appendChild(download);
-        download.click();
-        // 然后移除
-        document.body.removeChild(download);
+		blocks.pop(f_row);
+		// console.log(jsonData);
 	},
 	choose_row_col: function (){
 		var r_left = $('#rLeft').val();
@@ -162,14 +141,105 @@ var info_vm = {
 			quickchoose(r_left, r_right, c_up, c_down);
  		}
 	},
-	get_time1_time2: function(){
+    table_info_download1: function () {
+    	info_vm.get_data();
+		var len = downloadData[0].length;
+		var len_info = arr_info.length;
+		for(var l=0;l<len;l++){
+			var Str = `block id,bound,area description,description,expedite,congested,blocked,unknown,status\n`;
+			for(var i=0;i<downloadData.length;i++ ){
+				for(var j=0;j<len_info;j++){
+					Str += `${downloadData[i][l][arr_info[j]] + '\t'},`;
+				}
+				Str += '\n';
+			}
+			var url = 'data:text/csv;charset=utf-8,\ufeff' + encodeURIComponent(Str);
+			var download = document.createElement('a'); // 转换完成，创建一个a标签用于下载
+			var date = downloadData[0][l]['reg_date'];
+			download.download = '车流信息_' + date + '.xls';
+			download.href = url; // 转成本地连接到blob文本
+			document.body.appendChild(download);
+			download.click();
+			// 然后移除
+			document.body.removeChild(download);
+		}
+	},
+    table_info_download2: function () {
+    	info_vm.get_data();
+		// console.log(downloadData);
+    	var block_size = blocks.length;
+    	var len = arr_info1.length;
+    	for(var l=0;l<len;l++) {
+    		var Str = 'block id';
+			// var Str = `block id,bound,area description,description,expedite,congested,blocked,unknown,status\n`;
+    		for(s=0;s<block_size;s++){
+    			Str += ','+blocks[s];
+			}
+    		Str += '\n';
+			for(var i = 0 ; i < downloadData[0].length ; i++ ){
+				Str += downloadData[0][i]['reg_date']+',';
+				for(var j=0;j<block_size;j++){
+					Str += `${downloadData[j][i][arr_info1[l]] + '\t'},`;
+				}
+				Str += '\n';
+			}
+			var url = 'data:text/csv;charset=utf-8,\ufeff' + encodeURIComponent(Str);
+			// var blob = new Blob([this.response],{type: 'application/vnd.ms-excel'});
+			// var href = window.URL.createObjectURL(blob); // 创建下载的链接
+			var download = document.createElement('a'); // 转换完成，创建一个a标签用于下载
+			var nowDate = new Date();
+			var date = '' + nowDate.getFullYear() + (nowDate.getMonth()+1) + nowDate.getDate();
+			date += '_' + nowDate.getHours() + nowDate.getMinutes() + nowDate.getSeconds();
+			download.download = '车流信息_' + arr_info1[l] + '.xls';
+			download.href = url; // 转成本地连接到blob文本
+			document.body.appendChild(download);
+			download.click();
+			// 然后移除
+			document.body.removeChild(download);
+		}
+	},
+	get_data: function(){
+    	downloadData = [];
+    	var time1 = info_vm.get_time1();
+    	var time2 = info_vm.get_time2();
+		for(i=0;i<blocks.length;i++){
+			var uploadData = {
+				"block_Id":blocks[i],
+				"time1":time1,
+				"time2":time2
+			};
+			var json =JSON.stringify(uploadData);
+			$.ajax({
+				type: 'POST',
+				async: false,
+				data: 'info='+json,
+				url: 'php/getinfo.php',
+				dataType: 'json',
+				success: function (data) {
+					downloadData.push(data);
+					// console.log(data);
+					return data;
+				},
+				error: function () {
+					console.log("加载错误");
+				}
+			});
+		}
+		// console.log(downloadData);
+	},
+	get_time1: function(){
 		var ymd1 = $('#ymd').val();
-		var ymd2 = $('#ymd2').val();
 		var hour1 = document.getElementById("hour1").value;
-		var hour2 = document.getElementById("hour2").value;
 		var minute1 = document.getElementById("minute1").value;
+		var time1 = ymd1+' '+hour1+':'+minute1+":00";
+		return time1;
+	},
+	get_time2: function(){
+		var ymd2 = $('#ymd2').val();
+		var hour2 = document.getElementById("hour2").value;
 		var minute2 = document.getElementById("minute2").value;
-		alert(ymd1+" "+hour1+":"+minute1+"   "+ymd2+" "+hour2+":"+minute2);
+		var time2 = ymd2+' '+hour2+':'+minute2+":00";
+		return time2;
 	}
 };
 

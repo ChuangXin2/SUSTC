@@ -20,17 +20,18 @@ $password = "";
 $dbname = "myDB";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
+/*
+$info = $_POST["info"];
+$result = json_decode($info);
 
-
-$block_Id = 1;
-
+$block_Id = $result -> block_Id;
+*/
 if ($conn->connect_error) {
     die("connect errpr: " . $conn->connect_error);
 }
-//unix_timestamp(reg_date)>unix_timestamp('2020-01-05 10:05:00') and 
-$sql = "select * from traffic where block_id=$block_Id;";
+// and 
+$sql = "select * from traffic where block_id=1 and unix_timestamp(reg_date)>unix_timestamp('2020-01-06 10:40:00') and unix_timestamp(reg_date)<unix_timestamp('2020-01-06 11:50:00');";
 $retval = mysqli_query( $conn, $sql );
-
 $data=array();
 
 if(! $retval )
