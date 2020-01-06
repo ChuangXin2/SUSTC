@@ -161,6 +161,15 @@ var info_vm = {
 			//alert(r_left+" "+r_right+" "+c_up+" "+c_down);
 			quickchoose(r_left, r_right, c_up, c_down);
  		}
+	},
+	get_time1_time2: function(){
+		var ymd1 = $('#ymd').val();
+		var ymd2 = $('#ymd2').val();
+		var hour1 = document.getElementById("hour1").value;
+		var hour2 = document.getElementById("hour2").value;
+		var minute1 = document.getElementById("minute1").value;
+		var minute2 = document.getElementById("minute2").value;
+		alert(ymd1+" "+hour1+":"+minute1+"   "+ymd2+" "+hour2+":"+minute2);
 	}
 };
 
