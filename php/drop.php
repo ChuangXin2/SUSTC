@@ -18,7 +18,7 @@ if ($conn->connect_error) {
 } 
 
 // ≤Â»Î ˝æ›
-$sql = "DROP TABLE traffic";
+$sql = "DROP TABLE traffic;";
 $retval = mysqli_query( $conn, $sql );
 if(! $retval )
 {

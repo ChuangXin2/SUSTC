@@ -30,7 +30,7 @@ if ($conn->connect_error) {
     die("connect errpr: " . $conn->connect_error);
 }
 // and 
-$sql = "select * from traffic where block_id=1 and unix_timestamp(reg_date)>unix_timestamp('2020-01-06 10:40:00') and unix_timestamp(reg_date)<unix_timestamp('2020-01-06 11:50:00');";
+$sql = "select * from traffic where block_id=155 and unix_timestamp(reg_date)>unix_timestamp('2020-02-26 00:00:00');";# 
 $retval = mysqli_query( $conn, $sql );
 $data=array();
 
@@ -39,13 +39,12 @@ if(! $retval )
     die('无法读取数据: ' . mysqli_error($conn));
 }
 while($row = mysqli_fetch_array($retval, MYSQLI_ASSOC)) {
-	$arrInfo=array();
 	$item=array('block_Id'=>$row['block_id'],'block_des'=>urlencode($row["block_des"]),'bound'=>$row['bound'],	'expedite'=>$row["expedite"],'congested'=>$row["congested"],
 	'blocked'=>$row["blocked"],'unknown'=>$row["unknown"],'status'=>$row["status"],'description'=>urlencode($row["description"]),'reg_date'=>$row["reg_date"]);
+	echo urldecode(json_encode($item));
 	array_push($data,$item);
 }
-$json=urldecode(json_encode($data)) ;
-echo $json;
+$json=urldecode(json_encode($data));
 
 mysqli_free_result($retval);
 mysqli_close($conn);

@@ -8,7 +8,22 @@ var keys = {
 	"info-hour7":"8a490c31be45559b4c880f9ac9996145",
 	"info-hour8":"b8ab9ef8c8b80bf784754196b27a0bec",
 	"info-hour9":"c0ac36cf13fc327203e18939dd859fb9",
-	"info-hour14":"57c0e2e033ba005979d295567c6fd0c0",
+	"info-hour10":"57c0e2e033ba005979d295567c6fd0c0",
+	"info-hour11":"b9580ab1233aa7fc4560bcc4d7260820",
+	"info-hour12":"0d7ff34bf9c711dd0b8797a5aa3f3832",
+	"info-hour13":"c70a1e55a9a255599dfe9003f06ff720",
+	"info-hour14":"a14ce6ad6dc76dde320af540a1e4c26b",
+	"info-hour15":"dda23161a7c80bd45095e79f92f03afc",
+	"info-hour16":"fbc37f9624a11daf6b3af9ac8fa1918e",
+	"info-hour17":"cbbf350d8f94beb0c9f17ae6b92140cb",
+	"info-hour18":"4047da50f3d2a224abe6fcadecfd7c99",
+	"info-hour19":"b7e48d2982382d5c45177b697b35d8d4",
+	"info-hour20":"912b85a9fa16651bc57096db7a58b832",
+	"info-hour21":"57c0e2e033ba005979d295567c6fd0c0",
+	"info-hour22":"57c0e2e033ba005979d295567c6fd0c0",
+	"info-hour23":"57c0e2e033ba005979d295567c6fd0c0",
+	"info-hour24":"57c0e2e033ba005979d295567c6fd0c0",
+	"info-hour-other":"57c0e2e033ba005979d295567c6fd0c0"
 };
 const jsonData = [];
 var downloadData = [];
@@ -29,7 +44,7 @@ var info_vm = {
 	info_show_data:function(bound) {
 		var nowDate = new Date();
 		var hour = nowDate.getHours().toString();
-		var key = keys['info-hour'+1];
+		var key = keys['info-hour-other'];
 		var url = 'https://restapi.amap.com/v3/traffic/status/rectangle?rectangle='+bound+'&&key=' + key;
 		$.ajax({
 			type: 'GET',
@@ -38,21 +53,36 @@ var info_vm = {
 			url: url,
 			dataType: 'json',
 			success: function (data) {
+				console.log(data);
 				info_vm.table_info(bound,data);
-				new_bound = '（' + bound.northeast.P + '，' + bound.northeast.R + '）；（' +
+				var new_bound = '（' + bound.northeast.P + '，' + bound.northeast.R + '）；（' +
 							bound.southwest.P + '，' + bound.southwest.R + '）';
 				var traf_info = data.trafficinfo;
-				var evaluation = traf_info.evaluation;
-				var info = {
-					new_bound:new_bound,
-					area_description:traf_info.description,
-					description:evaluation.description,
-					expedite:evaluation.expedite,
-					congested:evaluation.congested,
-					blocked:evaluation.blocked,
-					unknown:evaluation.unknown,
-					status:evaluation.status
-				};
+				if(traf_info == undefined){
+					var info = {
+						new_bound:new_bound,
+						area_description:'',
+						description:'',
+						expedite:'',
+						congested:'',
+						blocked:'',
+						unknown:'',
+						status:''
+					};
+				}
+				else {
+					var evaluation = traf_info.evaluation;
+					var info = {
+						new_bound:new_bound,
+						area_description:traf_info.description,
+						description:evaluation.description,
+						expedite:evaluation.expedite,
+						congested:evaluation.congested,
+						blocked:evaluation.blocked,
+						unknown:evaluation.unknown,
+						status:evaluation.status
+					};
+				}
 				jsonData.push(info);
 				// console.log(jsonData);
 				// console.log(new_bound);
@@ -65,7 +95,6 @@ var info_vm = {
 	},
 	table_info:function(bound,data){
 		var traf_info = data.trafficinfo;
-		var evaluation = traf_info.evaluation;
 		var a=document.getElementById('t1');
 		var a0=a.insertRow(-1);
 		var a1=a0.insertCell(0);
@@ -77,19 +106,30 @@ var info_vm = {
 		boundstr = ""+bound;
 		boundspl = boundstr.split(';');
 		a1.innerHTML = boundspl[0]+"<br />"+boundspl[1]+"<br />";
-		a2.innerHTML = traf_info.description;
-		a3.innerHTML = evaluation.expedite;
-		expedite_str = ""+evaluation.expedite;
-		expedite_f = parseFloat(expedite_str)/100;
-		if(expedite_f >= 0.75){
-			addbing1();
-		}			
-		else {
+		if(traf_info == undefined){
 			addbing2();
+			a2.innerHTML = '';
+			a3.innerHTML = '';
+			a4.innerHTML = '';
+			a5.innerHTML = '';
+			a6.innerHTML = '';
 		}
-		a4.innerHTML = evaluation.congested;
-		a5.innerHTML = evaluation.blocked;
-		a6.innerHTML = evaluation.unknown;
+		else{
+			var evaluation = traf_info.evaluation;
+			a2.innerHTML = traf_info.description;
+			a3.innerHTML = evaluation.expedite;
+			expedite_str = ""+evaluation.expedite;
+			expedite_f = parseFloat(expedite_str)/100;
+			if(expedite_f >= 0.75){
+				addbing1();
+			}
+			else {
+				addbing2();
+			}
+			a4.innerHTML = evaluation.congested;
+			a5.innerHTML = evaluation.blocked;
+			a6.innerHTML = evaluation.unknown;
+		}
 	},
 	row_delete:function(bound){
 		boundstr = ""+bound;

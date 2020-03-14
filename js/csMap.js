@@ -158,7 +158,6 @@ function drawrectangle(southWest, northEast, i, j, center_x_total, center_y_tota
         rectangle2.on('click', (data) => {//绑定左键事件
             info_vm.row_delete(rectangle2.getBounds());
 			map.remove(rectangle2);
-			
         });
     });
 }
