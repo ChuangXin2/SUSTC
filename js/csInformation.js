@@ -1,4 +1,5 @@
 var keys = {
+	"info-hour0":"57c0e2e033ba005979d295567c6fd0c0",
 	"info-hour1":"55b5c532f41cda833338735982e156a0",
 	"info-hour2":"4bf675666ef3716cf0c78eafb22c172c",
 	"info-hour3":"b8b5a0ea842e01800f4d41b2ea5264e6",

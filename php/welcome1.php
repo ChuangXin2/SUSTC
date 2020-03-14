@@ -20,14 +20,23 @@ if ($conn->connect_error) {
     die("connect errpr: " . $conn->connect_error);
 } 
 
+
 $info = $_POST["info"];
 $midresult = json_decode($info);
+/*
+$result = $midresult[2];
+$block_Id = $result -> block_Id;
+$block_des = $result -> block_des;
+$bound = $result -> bound;
+$expedite = $result -> expedite;
+$congested = $result -> congested;
+$blocked = $result -> blocked;
+$unknown = $result -> unknown;
+$status = $result -> status;
+$description = $result -> description;
+$reg_date = $result -> reg_date;
 
-// 插入数据
-$sql = "
-INSERT INTO traffic (block_Id, block_des, bound, expedite, congested, blocked, unknown, status, description, reg_date)
-VALUES ";
-for($i=0;$i<count($midresult);$i++){#
+for($i=0;$i<4;$i++){	#count($midresult)
     $result = $midresult[$i];
     $block_Id = $result -> block_Id;
     $block_des = $result -> block_des;
@@ -39,21 +48,20 @@ for($i=0;$i<count($midresult);$i++){#
     $status = $result -> status;
     $description = $result -> description;
     $reg_date = $result -> reg_date;
-	if($i!=count($midresult)-1) {
-		$sql .= "('$block_Id','$block_des', '$bound', '$expedite','$congested','$blocked','$unknown','$status','$description','$reg_date'),";
-	}
-	else {
-		$sql .= "('$block_Id','$block_des', '$bound', '$expedite','$congested','$blocked','$unknown','$status','$description','$reg_date');";
-	}
+	$json=urldecode(json_encode($data));
 }
 
+// 插入数据
+$sql = "
+INSERT INTO traffic (block_Id, block_des, bound, expedite, congested, blocked, unknown, status, description, reg_date)
+VALUES 
+('$block_Id','$block_des', '$bound', '$expedite','$congested','$blocked','$unknown','$status','$description','$reg_date');";
+*/
 $retval = mysqli_query( $conn, $sql );
 if(! $retval )
 {
     die('无法读取数据: ' . mysqli_error($conn));
 }
-else{
-    echo $info;
-}
+echo $info;
 mysqli_close($conn);
 ?>

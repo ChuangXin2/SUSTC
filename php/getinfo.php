@@ -6,10 +6,11 @@ header("Content-type:text/html;charset=utf-8");
 * Changer la valeur du 3e paramètre si vous avez mis un mot de passe à root
 */
 
-$servername = "127.0.0.1";
+$servername = "172.16.0.14";
 $username = "root";
-$password = "";
-$dbname = "myDB";
+$password = "@Sustc161827";
+$dbname = "SUSTC";
+$port = "10125";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 

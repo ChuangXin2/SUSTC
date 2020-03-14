@@ -27,6 +27,19 @@ var keys = {
 };
 var descrip = ['整体畅通','轻度拥堵','整体拥堵',''];
 
+function NewTest() {
+	$.ajax({
+        type: 'POST',
+        data: '',
+        url: 'py/test.py',
+        success: function (data) {
+            console.log(data);
+        },
+        error: function () {
+            console.log("加载错误");
+        }
+	});
+}
 
 function TestInsert() {
 		var time1 = '2020-01-06 10:40:00';
