@@ -1,8 +1,10 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 import pymysql
 
-conn=pymysql.connect(host='cdb-ef3lz554.cd.tencentcdb.com', user='root', passwd='@Sustc161827', db='SUSTC', port=10125, charset='utf8')
+conn = pymysql.connect(host='cdb-ef3lz554.cd.tencentcdb.com', user='root', passwd='@Sustc161827', db='SUSTC', port=10125, charset='utf8')
 
-cursor=conn.cursor() #控制光标
+cursor = conn.cursor()
 sql = """CREATE TABLE traffic (
 id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
 block_id int(3),
@@ -17,5 +19,5 @@ description VARCHAR(50),
 reg_date TIMESTAMP NOT NULL
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;"""
 cursor.execute(sql)
-conn.commit()#提交事务
-conn.close()# 断开与数据库的链接
+conn.commit()
+conn.close()
